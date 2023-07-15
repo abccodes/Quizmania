@@ -1,0 +1,92 @@
+[
+  {
+    "question": "Who is Luke Skywalker's father?",
+    "answer": "Darth Vader",
+    "wrongAnswers": [
+      "Obi-Wan Kenobi",
+      "Yoda",
+      "Emperor Palpatine"
+    ]
+  },
+  {
+    "question": "What is the name of Han Solo's ship?",
+    "answer": "Millennium Falcon",
+    "wrongAnswers": [
+      "X-wing",
+      "TIE Fighter",
+      "Star Destroyer"
+    ]
+  },
+  {
+    "question": "Who is Princess Leia's adoptive father?",
+    "answer": "Bail Organa",
+    "wrongAnswers": [
+      "Darth Sidious",
+      "Qui-Gon Jinn",
+      "Mace Windu"
+    ]
+  },
+  {
+    "question": "What species is Chewbacca?",
+    "answer": "Wookiee",
+    "wrongAnswers": [
+      "Ewok",
+      "Jawa",
+      "Togruta"
+    ]
+  },
+  {
+    "question": "Which planet is the Death Star destroyed above in A New Hope?",
+    "answer": "Yavin IV",
+    "wrongAnswers": [
+      "Tatooine",
+      "Endor",
+      "Hoth"
+    ]
+  },
+  {
+    "question": "Who is the Supreme Leader of the First Order in the sequel trilogy?",
+    "answer": "Snoke",
+    "wrongAnswers": [
+      "Kylo Ren",
+      "Darth Maul",
+      "Count Dooku"
+    ]
+  },
+  {
+    "question": "What color is Mace Windu's lightsaber?",
+    "answer": "Purple",
+    "wrongAnswers": [
+      "Green",
+      "Blue",
+      "Red"
+    ]
+  },
+  {
+    "question": "Who is the Sith Lord that trained Darth Sidious?",
+    "answer": "Darth Plagueis",
+    "wrongAnswers": [
+      "Darth Bane",
+      "Darth Malgus",
+      "Darth Tyranus"
+    ]
+  },
+  {
+    "question": "What is the name of the desert planet in The Force Awakens?",
+    "answer": "Jakku",
+    "wrongAnswers": [
+      "Tatooine",
+      "Geonosis",
+      "Naboo"
+    ]
+  },
+  {
+    "question": "Which bounty hunter captures Han Solo in The Empire Strikes Back?",
+    "answer": "Boba Fett",
+    "wrongAnswers": [
+      "Dengar",
+      "IG-88",
+      "Bossk"
+    ]
+  }
+]
