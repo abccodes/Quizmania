@@ -1,14 +1,19 @@
-import logo from './logo.svg'
-import './App.css'
-import triviaQuestions from './data/questions.json'
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Quiz from './pages/Quiz.jsx'
+import LandingPage from './pages/LandingPage'
 
-function App() {
-  return 
-  
-  <div className="App">
-
-
-  </div>
+export default function App() {
+  return (
+    <>
+      <div>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/quiz" element={<Quiz />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
+  )
 }
-
-export default App

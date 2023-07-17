@@ -1,92 +1,92 @@
 [
   {
-    "question": "Who is Luke Skywalker's father?",
-    "answer": "Darth Vader",
+    "question": "What is the largest land animal?",
+    "answer": "Elephant",
     "wrongAnswers": [
-      "Obi-Wan Kenobi",
-      "Yoda",
-      "Emperor Palpatine"
+      "Giraffe",
+      "Hippo",
+      "Rhinoceros"
     ]
   },
   {
-    "question": "What is the name of Han Solo's ship?",
-    "answer": "Millennium Falcon",
+    "question": "Which bird is known for its ability to mimic human speech?",
+    "answer": "Parrot",
     "wrongAnswers": [
-      "X-wing",
-      "TIE Fighter",
-      "Star Destroyer"
+      "Eagle",
+      "Ostrich",
+      "Penguin"
     ]
   },
   {
-    "question": "Who is Princess Leia's adoptive father?",
-    "answer": "Bail Organa",
+    "question": "Which animal is known for having the longest neck?",
+    "answer": "Giraffe",
     "wrongAnswers": [
-      "Darth Sidious",
-      "Qui-Gon Jinn",
-      "Mace Windu"
+      "Elephant",
+      "Zebra",
+      "Kangaroo"
     ]
   },
   {
-    "question": "What species is Chewbacca?",
-    "answer": "Wookiee",
+    "question": "What is the fastest land animal?",
+    "answer": "Cheetah",
     "wrongAnswers": [
-      "Ewok",
-      "Jawa",
-      "Togruta"
+      "Lion",
+      "Gazelle",
+      "Leopard"
     ]
   },
   {
-    "question": "Which planet is the Death Star destroyed above in A New Hope?",
-    "answer": "Yavin IV",
+    "question": "What is the largest species of penguin?",
+    "answer": "Emperor Penguin",
     "wrongAnswers": [
-      "Tatooine",
-      "Endor",
-      "Hoth"
+      "King Penguin",
+      "Adelie Penguin",
+      "Gentoo Penguin"
     ]
   },
   {
-    "question": "Who is the Supreme Leader of the First Order in the sequel trilogy?",
-    "answer": "Snoke",
+    "question": "Which animal is known for its ability to camouflage?",
+    "answer": "Chameleon",
     "wrongAnswers": [
-      "Kylo Ren",
-      "Darth Maul",
-      "Count Dooku"
+      "Kangaroo",
+      "Gorilla",
+      "Hippopotamus"
     ]
   },
   {
-    "question": "What color is Mace Windu's lightsaber?",
-    "answer": "Purple",
+    "question": "What is the national animal of Australia?",
+    "answer": "Kangaroo",
     "wrongAnswers": [
-      "Green",
-      "Blue",
-      "Red"
+      "Emu",
+      "Platypus",
+      "Koala"
     ]
   },
   {
-    "question": "Who is the Sith Lord that trained Darth Sidious?",
-    "answer": "Darth Plagueis",
+    "question": "Which animal is known for its ability to echolocate?",
+    "answer": "Bat",
     "wrongAnswers": [
-      "Darth Bane",
-      "Darth Malgus",
-      "Darth Tyranus"
+      "Dolphin",
+      "Squirrel",
+      "Owl"
     ]
   },
   {
-    "question": "What is the name of the desert planet in The Force Awakens?",
-    "answer": "Jakku",
+    "question": "What is the largest species of shark?",
+    "answer": "Whale Shark",
     "wrongAnswers": [
-      "Tatooine",
-      "Geonosis",
-      "Naboo"
+      "Great White Shark",
+      "Tiger Shark",
+      "Hammerhead Shark"
     ]
   },
   {
-    "question": "Which bounty hunter captures Han Solo in The Empire Strikes Back?",
-    "answer": "Boba Fett",
+    "question": "Which animal is known for sleeping while hanging upside down?",
+    "answer": "Bat",
     "wrongAnswers": [
-      "Dengar",
-      "IG-88",
-      "Bossk"
+      "Spider",
+      "Sloth",
+      "Monkey"
     ]
   }
 ]
