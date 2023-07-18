@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../App.css";
-import triviaQuestions from "../data/questions.json";
 import {
   Text,
   Box,
@@ -33,7 +32,7 @@ async function run(topic) {
         content: `
                 generate 10 trivia questions about ${topic} with answers. include three wrong answers.
                 format the response as JSON in the shape of: ${JSON.stringify(
-                  shape
+                  shape,
                 )}
                 `,
       },
@@ -42,13 +41,13 @@ async function run(topic) {
 
   const question = JSON.parse(completion.data.choices[0].message.content);
 
-  //   question.forEach((item, index) => {
-  //     console.log(`Question ${index + 1}: ${item.question}`);
-  //     console.log(`Answer: ${item.answer}`);
-  //     console.log(`Incorrect Answers: ${item.wrongAnswers.join(", ")}`);
-  //     console.log("---------------------");
+    question.forEach((item, index) => {
+      console.log(`Question ${index + 1}: ${item.question}`);
+      console.log(`Answer: ${item.answer}`);
+      console.log(`Incorrect Answers: ${item.wrongAnswers.join(", ")}`);
+      console.log("---------------------");
 
-  // });
+  });
 
   return question;
 }
@@ -81,9 +80,10 @@ function Quiz() {
     setIndex(2);
   }
 
-  function backToHome() {
+  function backToInput() {
     setIndex(3);
   }
+
 
   function GenerateAndCheckQuestion() {
     let first = true;
@@ -133,32 +133,40 @@ function Quiz() {
     };
 
     return (
-      <div>
-        <Box>
-          <AbsoluteCenter>
-            <Box>
-              <Text fontSize="md" color="white">
-                QUESTION NUMBER: {currentQuestionNumber}
-              </Text>
-              <Text fontSize="md" color="white">
-                QUESTION: {currQuestion.question}
-              </Text>
-              <Text fontSize="md" color="white">
-                SCORE: {score}
-              </Text>
-              <Text fontSize="md" color="white">
-                CORRECT ANSWER: {correctAnswer}
-              </Text>
-            </Box>
-            <Box>
-              <Button onClick={() => checkAnswer(0)}>{quesArr[0]}</Button>
-              <Button onClick={() => checkAnswer(1)}>{quesArr[1]}</Button>
-              <Button onClick={() => checkAnswer(2)}>{quesArr[2]}</Button>
-              <Button onClick={() => checkAnswer(3)}>{quesArr[3]}</Button>
-            </Box>
-          </AbsoluteCenter>
+      <Box>
+        <Center>
+          <Text fontSize="xl" color="white">
+            SCORE: {score}
+          </Text>
+        </Center>
+
+        <Box mt="2" mb="5%">
+          <Center>
+            <Text fontSize="3xl" color="white">
+              {currentQuestionNumber + 1}. {currQuestion.question}
+            </Text>
+          </Center>
         </Box>
-      </div>
+        <Box display="grid" gridGap={2} gridAutoFlow="row dense">
+          <Button fontSize="xl" onClick={() => checkAnswer(0)}>
+            {quesArr[0]}
+          </Button>
+          <Button fontSize="xl" onClick={() => checkAnswer(1)}>
+            {quesArr[1]}
+          </Button>
+          <Button fontSize="xl" onClick={() => checkAnswer(2)}>
+            {quesArr[2]}
+          </Button>
+          <Button fontSize="xl" onClick={() => checkAnswer(3)}>
+            {quesArr[3]}
+          </Button>
+        </Box>
+        {/* <Box> */}
+        {/* <Center> */}
+
+        {/* </Center> */}
+        {/* </Box> */}
+      </Box>
     );
   }
 
@@ -167,19 +175,34 @@ function Quiz() {
     element = (
       <Box w="100%" h="calc(100vh)" className="gradientBackground">
         <AbsoluteCenter>
-          <Text fontSize="5xl" color="white" as="b">
-            Game Over!
-          </Text>
-          <Text fontSize="lg" color="white" as="b">
-            Final Score: {score}
-          </Text>
-
-          <Button colorScheme="teal" size="lg" onClick={() => restartQuiz()}>
-            Restart
-          </Button>
-          <Button colorScheme="teal" size="lg" onClick={() => backToHome()}>
-            Back To Home
-          </Button>
+          <Box>
+            <Center>
+              <Text fontSize="3xl" color="white" as="b">
+                Game Over
+              </Text>
+            </Center>
+          </Box>
+          <Box>
+            <Center>
+              <Text fontSize="2xl" color="white" as="b">
+                Final Score: {score}
+              </Text>
+            </Center>
+          </Box>
+          <Center>
+            <Box display="grid" gridGap={2} gridAutoFlow="row dense" p="2%">
+              <Button
+                colorScheme="teal"
+                size="lg"
+                onClick={() => restartQuiz()}
+              >
+                Restart
+              </Button>
+              <Button colorScheme="teal" size="lg" onClick={() => backToInput()}>
+                Back To Home
+              </Button>
+            </Box>
+          </Center>
         </AbsoluteCenter>
       </Box>
     );
@@ -206,32 +229,44 @@ function Quiz() {
               </Text>
             </Center>
             <Input
+              mt="5%"
+              mb="5%"
               value={topic}
               onChange={handleTopicChange}
               placeholder=""
               size="lg"
               color="white"
             />
-            <div>
-              {isLoading ? (
+              <Box display="grid" gridGap={2} gridAutoFlow="row dense" p="2%">
+                {isLoading ? (
+                  <Button
+                    colorScheme="teal"
+                    isLoading
+                    size="lg"
+                    onClick={generateQuizQuestions}
+                  >
+                    Generating Quiz
+                  </Button>
+                ) : (
+                  <Button
+                    colorScheme="teal"
+                    size="lg"
+                    onClick={generateQuizQuestions}
+                  >
+                    Generate Quiz
+                  </Button>
+                )}
+                 <Link to="/">
                 <Button
-                  colorScheme="teal"
-                  isLoading
-                  size="lg"
-                  onClick={generateQuizQuestions}
-                >
-                  Generating Quiz
-                </Button>
-              ) : (
-                <Button
+                  w="100%"
                   colorScheme="teal"
                   size="lg"
-                  onClick={generateQuizQuestions}
+                  onClick={backToInput}
                 >
-                  Generate Quiz
+                  Back
                 </Button>
-              )}
-            </div>
+                </Link>
+              </Box>
           </Box>
         </AbsoluteCenter>
       </Box>
@@ -246,3 +281,12 @@ function Quiz() {
 }
 
 export default Quiz;
+
+/* to do
+
+error handling for openai req
+easy, medium, hard feature
+front end ui design
+
+
+*/

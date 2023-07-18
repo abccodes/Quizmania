@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import '../App.css'
-import triviaQuestions from '../data/questions.json'
 import {
   Text,
   Box,
@@ -16,9 +15,6 @@ import { Link } from 'react-router-dom'
 
 
 function landingPage() {
-  // const [topic, setTopic] = useState([])
-  //   const handleTopicChange = (event) => setTopic(event.target.value)
-
   return (
     <div className="App">
       <Box w="100%" h="calc(100vh)" className="gradientBackground">
@@ -41,24 +37,9 @@ function landingPage() {
               Get Started
             </Button>
             </Link>
-            {/* <Button
-              isLoading
-              loadingText="Submitting"
-              colorScheme="teal"
-              variant="outline"
-            >
-              Submit
-            </Button> */}
           </Box>
         </AbsoluteCenter>
       </Box>
-      {/* <Text mb="8px">Value: {topic}</Text>
-      <Input
-        value={topic}
-        onChange={handleTopicChange}
-        placeholder="Here is a sample placeholder"
-        size="lg"
-      /> */}
     </div>
   )
 }
