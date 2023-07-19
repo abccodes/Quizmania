@@ -7,6 +7,7 @@ import {
   AbsoluteCenter,
   Button,
   Input,
+  Heading,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const { Configuration, OpenAIApi } = require("openai");
@@ -41,12 +42,11 @@ async function run(topic) {
 
   const question = JSON.parse(completion.data.choices[0].message.content);
 
-    question.forEach((item, index) => {
-      console.log(`Question ${index + 1}: ${item.question}`);
-      console.log(`Answer: ${item.answer}`);
-      console.log(`Incorrect Answers: ${item.wrongAnswers.join(", ")}`);
-      console.log("---------------------");
-
+  question.forEach((item, index) => {
+    console.log(`Question ${index + 1}: ${item.question}`);
+    console.log(`Answer: ${item.answer}`);
+    console.log(`Incorrect Answers: ${item.wrongAnswers.join(", ")}`);
+    console.log("---------------------");
   });
 
   return question;
@@ -73,6 +73,7 @@ function Quiz() {
     const data = await run(topic);
     setQuestion(data);
     setIndex(2);
+    buttonHandler();
   }
 
   function restartQuiz() {
@@ -83,7 +84,6 @@ function Quiz() {
   function backToInput() {
     setIndex(3);
   }
-
 
   function GenerateAndCheckQuestion() {
     let first = true;
@@ -98,7 +98,6 @@ function Quiz() {
 
     if (currentQuestionNumber == 0 && first == true) {
       setTopic();
-      buttonHandler();
       setScore(0);
       shuffleQuestion();
       first = false;
@@ -135,37 +134,60 @@ function Quiz() {
     return (
       <Box>
         <Center>
-          <Text fontSize="xl" color="white">
-            SCORE: {score}
+          <Text fontSize="xl" color="black">
+            {score} / 10
           </Text>
         </Center>
 
         <Box mt="2" mb="5%">
           <Center>
-            <Text fontSize="3xl" color="white">
+            <Text fontSize="3xl" color="black">
               {currentQuestionNumber + 1}. {currQuestion.question}
             </Text>
           </Center>
         </Box>
         <Box display="grid" gridGap={2} gridAutoFlow="row dense">
-          <Button fontSize="xl" onClick={() => checkAnswer(0)}>
+          <Button
+            colorScheme={"red"}
+            bg={"red.400"}
+            _hover={{ bg: "red.300" }}
+            rounded={"full"}
+            px={6}
+            onClick={() => checkAnswer(0)}
+          >
             {quesArr[0]}
           </Button>
-          <Button fontSize="xl" onClick={() => checkAnswer(1)}>
+          <Button
+            colorScheme={"red"}
+            bg={"red.400"}
+            _hover={{ bg: "red.500" }}
+            rounded={"full"}
+            px={6}
+            onClick={() => checkAnswer(1)}
+          >
             {quesArr[1]}
           </Button>
-          <Button fontSize="xl" onClick={() => checkAnswer(2)}>
+          <Button
+            colorScheme={"red"}
+            bg={"red.400"}
+            _hover={{ bg: "red.500" }}
+            rounded={"full"}
+            px={6}
+            onClick={() => checkAnswer(2)}
+          >
             {quesArr[2]}
           </Button>
-          <Button fontSize="xl" onClick={() => checkAnswer(3)}>
+          <Button
+            colorScheme={"red"}
+            bg={"red.400"}
+            _hover={{ bg: "red.500" }}
+            rounded={"full"}
+            px={6}
+            onClick={() => checkAnswer(3)}
+          >
             {quesArr[3]}
           </Button>
         </Box>
-        {/* <Box> */}
-        {/* <Center> */}
-
-        {/* </Center> */}
-        {/* </Box> */}
       </Box>
     );
   }
@@ -175,34 +197,46 @@ function Quiz() {
     element = (
       <Box w="100%" h="calc(100vh)" className="gradientBackground">
         <AbsoluteCenter>
-          <Box>
-            <Center>
-              <Text fontSize="3xl" color="white" as="b">
-                Game Over
-              </Text>
-            </Center>
-          </Box>
-          <Box>
-            <Center>
-              <Text fontSize="2xl" color="white" as="b">
-                Final Score: {score}
-              </Text>
-            </Center>
-          </Box>
           <Center>
+            <Text fontSize={{ base: "3xl", sm: "3xl", md: "4xl" }} as={"span"}>
+              {score} / 10
+            </Text>
+          </Center>
+          <Box>
+            <Center>
+              <Heading
+                m="5"
+                fontWeight={600}
+                fontSize={{ base: "5xl", sm: "5xl", md: "7xl" }}
+                lineHeight={"110%"}
+              >
+                Game Over
+              </Heading>
+            </Center>
+
             <Box display="grid" gridGap={2} gridAutoFlow="row dense" p="2%">
               <Button
-                colorScheme="teal"
-                size="lg"
+                rounded={"full"}
+                px={6}
+                colorScheme={"red"}
+                bg={"red.400"}
+                _hover={{ bg: "red.500" }}
                 onClick={() => restartQuiz()}
               >
                 Restart
               </Button>
-              <Button colorScheme="teal" size="lg" onClick={() => backToInput()}>
+              <Button
+                rounded={"full"}
+                px={6}
+                colorScheme={"red"}
+                bg={"red.400"}
+                _hover={{ bg: "red.500" }}
+                onClick={() => backToInput()}
+              >
                 Back To Home
               </Button>
             </Box>
-          </Center>
+          </Box>
         </AbsoluteCenter>
       </Box>
     );
@@ -223,11 +257,16 @@ function Quiz() {
       <Box w="100%" h="calc(100vh)" className="gradientBackground">
         <AbsoluteCenter>
           <Box>
-            <Center>
-              <Text fontSize="5xl" color="white" as="b">
-                Input a Topic
+            <Heading
+              fontWeight={600}
+              fontSize={{ base: "5xl", sm: "5xl", md: "6xl" }}
+              lineHeight={"110%"}
+            >
+              Test your{" "}
+              <Text as={"span"} color={"red.400"}>
+                knowledge
               </Text>
-            </Center>
+            </Heading>
             <Input
               mt="5%"
               mb="5%"
@@ -235,38 +274,38 @@ function Quiz() {
               onChange={handleTopicChange}
               placeholder=""
               size="lg"
-              color="white"
+              color="black"
             />
-              <Box display="grid" gridGap={2} gridAutoFlow="row dense" p="2%">
-                {isLoading ? (
-                  <Button
-                    colorScheme="teal"
-                    isLoading
-                    size="lg"
-                    onClick={generateQuizQuestions}
-                  >
-                    Generating Quiz
-                  </Button>
-                ) : (
-                  <Button
-                    colorScheme="teal"
-                    size="lg"
-                    onClick={generateQuizQuestions}
-                  >
-                    Generate Quiz
-                  </Button>
-                )}
-                 <Link to="/">
+            <Box display="grid" gridGap={2} gridAutoFlow="row dense" p="2%">
+              {isLoading ? (
                 <Button
-                  w="100%"
-                  colorScheme="teal"
-                  size="lg"
-                  onClick={backToInput}
+                  px={6}
+                  colorScheme={"red"}
+                  bg={"red.400"}
+                  rounded={"full"}
+                  isLoading
+                  onClick={generateQuizQuestions}
                 >
+                  Generating Quiz
+                </Button>
+              ) : (
+                <Button
+                  onClick={generateQuizQuestions}
+                  rounded={"full"}
+                  px={6}
+                  colorScheme={"red"}
+                  bg={"red.400"}
+                  _hover={{ bg: "red.500" }}
+                >
+                  Generate Quiz
+                </Button>
+              )}
+              <Link to="/">
+                <Button w="100%" rounded={"full"} px={6} onClick={backToInput}>
                   Back
                 </Button>
-                </Link>
-              </Box>
+              </Link>
+            </Box>
           </Box>
         </AbsoluteCenter>
       </Box>
